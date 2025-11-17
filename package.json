@@ -1,7 +1,7 @@
 {
   "name": "atividadeconversormoedas",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -27,7 +27,7 @@
   },
   "private": true,
   "devDependencies": {
-    "@types/react": "^19.2.5",
+    "@types/react": "^19.1.10",
     "@types/react-native": "^0.73.0",
     "typescript": "^5.9.3"
   }
