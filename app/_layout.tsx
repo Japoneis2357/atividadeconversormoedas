@@ -1,24 +1,30 @@
-import { Stack } from 'expo-router';
-import 'react-native-gesture-handler';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
-import { StyleSheet } from 'react-native';
+import { Drawer } from 'expo-router/drawer';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 
 export default function RootLayout() {
     return (
         <SafeAreaProvider>
-            <SafeAreaView style={styles.container}>
-                <Stack
-                    screenOptions={{headerShown: false, headerTitle: 'Demonstração navegação com Drawer'}}
+            <Drawer
+                screenOptions={{
+                    headerStyle: { backgroundColor: '#121212' },
+                    headerTintColor: '#fff',
+                    drawerActiveTintColor: '#f7931a',
+                    drawerInactiveTintColor: '#ccc',
+                    drawerStyle: { backgroundColor: '#1b1b1b' },
+                }}
+            >
+                <Drawer.Screen
+                    name="index"
+                    options={{ title: 'Início' }}
                 />
-            </SafeAreaView>
-        </SafeAreaProvider >
 
+                <Drawer.Screen
+                    name='(moedas)'
+                    options={{ title: 'Moedas' }}></Drawer.Screen>
+            </Drawer>
+
+
+        </SafeAreaProvider>
     );
 }
-
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    }
-});

@@ -1,4 +1,14 @@
-import { Redirect } from 'expo-router';
-export default function Index() {
-    return <Redirect href="/(drawer)" />;
+import { Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { globalStyles } from '../styles/global';
+
+export default function App() {
+    return (
+        <SafeAreaView style={globalStyles.container}>
+            <Text style={globalStyles.titulo}>🪙atividade criptomoedas🪙</Text>
+            <Text style={globalStyles.subtitulo}>
+                App de Cotações de Criptomoedas
+            </Text>
+        </SafeAreaView>
+    );
 }
