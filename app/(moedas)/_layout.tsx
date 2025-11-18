@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function MoedasLayout() {
     return (
@@ -20,7 +20,7 @@ export default function MoedasLayout() {
                     name="listagem"
                     options={{
                         title: "Listagem",
-                        tabBarIcon: ({ color, size }) => (<Ionicons name="list" size={size + 4} color={color} />)
+                        tabBarIcon: ({ color, size }) => (<MaterialIcons name="list" size={size + 4} color={color} />)
                     }}
                 />
 
