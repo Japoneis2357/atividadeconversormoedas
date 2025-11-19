@@ -8,6 +8,12 @@ export const globalStyles = StyleSheet.create({
         alignItems: 'center',
         padding: 20,
     },
+        placeholder: {
+        backgroundColor: "#fff",
+        width: 260,
+        height:65,
+        borderRadius:10,
+    },
     titulo: {
         color: '#000000',
         fontSize: 28,

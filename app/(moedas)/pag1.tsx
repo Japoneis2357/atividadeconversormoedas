@@ -2,6 +2,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { globalStyles } from '../../styles/global';
 import { Text } from 'react-native';
 import { useState, useEffect } from 'react';
+import { TextInput } from 'react-native-gesture-handler';
+import { View } from 'react-native';
+
 
 const urlSimplePrice = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd';
 
@@ -25,7 +28,14 @@ export default function Exemplo1Screen() {
 
     return (
         <SafeAreaView style={globalStyles.container}>
-            <Text style={globalStyles.texto}>$ {precoBitcoin}</Text>
+     
+                <Text style={globalStyles.texto}>$ {precoBitcoin}</Text>
+            <View style={globalStyles.placeholder} >
+                <TextInput
+                 keyboardType='numeric'
+                 placeholder='Insira o valor para converter: '
+                />
+            </View>
         </SafeAreaView>
     );
 }
