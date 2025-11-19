@@ -13,6 +13,7 @@ export const globalStyles = StyleSheet.create({
         width: 260,
         height:65,
         borderRadius:10,
+        marginBottom:40,
     },
     titulo: {
         color: '#000000',
@@ -26,6 +27,7 @@ export const globalStyles = StyleSheet.create({
         fontSize: 22,
         textAlign: 'center',
     },
+    
     texto: {
         color: "#fff",
         fontSize: 16,
