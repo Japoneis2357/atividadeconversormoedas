@@ -4,38 +4,55 @@ import { Text } from 'react-native';
 import { useState, useEffect } from 'react';
 import { TextInput } from 'react-native-gesture-handler';
 import { View } from 'react-native';
+import RNPickerSelect from 'react-native-picker-select';
+import { ItemMoeda } from '../../src/components/ItemMoeda';
 
-
-const urlSimplePrice = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd';
+   const URL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd';
 
 export default function Exemplo1Screen() {
 
-    const [precoBitcoin, setPrecoBitcoin] = useState('');
+  const [precoBitcoin, setPrecoBitcoin] = useState('');
+  const [listaMoedas, setListaMoedas] = useState([]);
 
-    useEffect(() => {
-        const intervalo = setInterval(() => {
-            fetch(urlSimplePrice)
-                .then(res => res.json())
-                .then(data => data.bitcoin.usd)
-                .then(data => { setPrecoBitcoin(data); console.log('deu certo... caiu no then'); })
-                .catch(data => { 'deu erro... caiu no catch'; console.log('erro') });
-        }, 100000);
+  useEffect(() => {
+      const intervalo = setInterval(() => {
+          fetch(URL)
+              .then(res => res.json())
+              .then(data => data.bitcoin.usd)
+              .then(data => setPrecoBitcoin(data))
+              .catch(err => console.log("ERRO:", err));
 
-        return () => clearInterval(intervalo);
-    }, []);
+      }, 100000);
 
+      return () => clearInterval(intervalo);
+  }, []);
 
+  // buscar lista de moedas
+  useEffect(() => {
+    fetch(URL)
+      .then(res => res.json())
+      .then(data => setListaMoedas(data))
+      .catch(err => console.log(err));
+  }, []);
 
-    return (
-        <SafeAreaView style={globalStyles.container}>
-     
-                <Text style={globalStyles.texto}>$ {precoBitcoin}</Text>
-            <View style={globalStyles.placeholder} >
-                <TextInput
-                 keyboardType='numeric'
-                 placeholder='Insira o valor para converter: '
-                />
-            </View>
-        </SafeAreaView>
-    );
+  // montar lista para o Picker
+  const itensPicker = listaMoedas.map((item) => ({
+    label: item.name,
+    value: item.id
+  }));
+
+  return (
+    <SafeAreaView style={globalStyles.container}>
+
+      <Text style={globalStyles.texto}>$ {precoBitcoin}</Text>
+
+      <View style={globalStyles.placeholder}>
+        <RNPickerSelect
+          onValueChange={(value) => console.log(value)}
+          items={itensPicker}
+        />
+      </View>
+
+    </SafeAreaView>
+  );
 }

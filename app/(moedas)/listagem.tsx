@@ -45,18 +45,6 @@ export default function ListagemScreen() {
         );
     }
 
-    // se carregou com sucesso
-    // MAIS SIMPLES
-    // return (
-    //     <SafeAreaView style={globalStyles.container}>
-
-    //         <FlatList
-    //             data={moedas}
-    //             renderItem={({ item }) => (<Text style={globalStyles.texto}>{item.name}</Text>)}
-    //         />
-
-    //     </SafeAreaView>
-    // );
 
     // RENDER ITEM COM COMPONENTE SEPARADO
 
